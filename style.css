@@ -27,3 +27,9 @@
 .cover{mix-blend-mode:multiply}.cover-heading{mix-blend-mode:normal}.cover-seal{white-space:nowrap;width:31px;height:32px;padding:1px 0;font-size:11px;letter-spacing:0;line-height:14px}
 @media(prefers-color-scheme:dark){.cover{mix-blend-mode:screen}.cover-heading{mix-blend-mode:normal}.cover-heading img{filter:invert(1)}}
 .card>.cover-bottom{position:absolute;z-index:4;transition:opacity .35s,visibility 0s .35s}.card.open>.cover-bottom{opacity:0;visibility:hidden;pointer-events:none}.card>.cover-bottom::before{background:radial-gradient(ellipse at center,var(--panel),transparent 75%);inset:-16px 10% -20px}.open-button{background:var(--panel)}
+
+/* Keep the sender inscription legible above the ink landscape on small phones. */
+.card>.cover-signature{z-index:4;left:10%;font-size:17px;line-height:1.55;gap:10px;letter-spacing:.1em;color:var(--ink);isolation:isolate;pointer-events:none;transition:opacity .35s,visibility 0s .35s}
+.card>.cover-signature::before{content:"";position:absolute;inset:-18px -14px;z-index:-1;background:var(--paper);border-radius:48%;filter:blur(12px);opacity:.96}
+.card.open>.cover-signature{opacity:0;visibility:hidden}
+@media(max-width:360px){.card>.cover-signature{left:7%;font-size:16px;gap:8px}}
