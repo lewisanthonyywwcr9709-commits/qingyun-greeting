@@ -26,3 +26,12 @@ https://creativecommons.org/licenses/by/4.0/
 Source: https://peritune.com/loop/PerituneMaterial_Wuxia2_Guzheng_Pipa_loop.zip
 Retrieved 2026-09-10. The 2018 composition remains under CC BY 4.0, as confirmed on https://peritune.com/about/.
 Changes: official looping edition, AAC conversion and loudness normalization to -21 LUFS. Used as background music for the greeting.
+
+## Current soundtrack (ink8)
+
+Taohua by PeriTune — CC BY 4.0.
+https://peritune.com/blog/2021/03/03/taohua/
+https://creativecommons.org/licenses/by/4.0/
+Source: https://peritune.com/loop/PerituneMaterial_Taohua_loop.zip
+Retrieved 2026-09-10. The 2021 composition remains under CC BY 4.0, as confirmed on https://peritune.com/about/.
+Changes: official looping edition, AAC conversion and loudness normalization to -21 LUFS. Used as background music for the greeting.
