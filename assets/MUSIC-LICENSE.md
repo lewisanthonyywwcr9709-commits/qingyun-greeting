@@ -42,3 +42,8 @@ Changes: official looping edition, AAC conversion and loudness normalization to 
 Official song page: https://music.163.com/song?id=2686938595
 Embedded using the NetEase Cloud Music official external player from https://music.163.com/outchain/2/2686938595/. No audio file is copied or redistributed for this song.
 Player auto=1 requests autoplay; the official player repeats its single-track playlist. Browser and platform restrictions still apply.
+
+## Playback compatibility update (ink10)
+
+Uses the NetEase external media link directly in a native audio player: https://music.163.com/song/media/outer/url?id=2686938595.mp3
+No copy of the song is hosted in this repository. HTTPS upgrades are requested for the provider redirect. Native playback retains manual controls, loop, autoplay attempt, and start on greeting-open gesture.

@@ -4,11 +4,14 @@
  const card=$('card'),cover=$('cover'),letter=$('letter'),open=$('open-card'),music=$('music'),musicToggle=$('music-toggle'),status=$('status'),fallback=$('copy-fallback');
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let musicPreference=true,quiet=reduced.matches;
- const musicDock=$('music-dock'),playerUrl=music.src;
- function syncMusic(){musicToggle.setAttribute('aria-pressed',String(musicPreference));musicToggle.setAttribute('aria-label',musicPreference?'关闭配乐':'开启配乐');musicToggle.title=musicPreference?'关闭配乐':'开启配乐';}
- musicToggle.addEventListener('click',()=>{musicPreference=!musicPreference;music.src=musicPreference?playerUrl:'about:blank';musicDock.hidden=!musicPreference;card.classList.toggle('music-enabled',musicPreference);syncMusic();});
- syncMusic();
- open.addEventListener('click',()=>{cover.inert=true;letter.inert=false;open.setAttribute('aria-expanded','true');card.classList.add('open');burst();setTimeout(()=>{if(card.classList.contains('open'))$('recipient').focus({preventScroll:true});},reduced.matches?0:1100);});
+ music.volume=.48;music.loop=true;music.autoplay=true;
+ function syncMusic(){const playing=!music.paused;musicToggle.setAttribute('aria-pressed',String(playing));musicToggle.setAttribute('aria-label',playing?'暂停配乐':'播放配乐');musicToggle.title=playing?'暂停配乐':'播放配乐';}
+ async function playMusic(){if(!musicPreference)return;try{await music.play();if(!musicPreference)music.pause();}catch{}syncMusic();}
+ musicToggle.addEventListener('click',()=>{if(music.paused){musicPreference=true;playMusic();}else{musicPreference=false;music.pause();}});
+ music.addEventListener('play',syncMusic);music.addEventListener('pause',syncMusic);
+ function resumeOnGesture(e){if(musicToggle.contains(e.target))return;if(musicPreference&&music.paused)playMusic();}
+ document.addEventListener('pointerdown',resumeOnGesture);document.addEventListener('touchend',resumeOnGesture,{passive:true});document.addEventListener('keydown',resumeOnGesture);document.addEventListener('WeixinJSBridgeReady',playMusic);music.addEventListener('canplay',()=>{if(musicPreference&&music.paused)playMusic();},{once:true});playMusic();
+ open.addEventListener('click',()=>{cover.inert=true;letter.inert=false;open.setAttribute('aria-expanded','true');card.classList.add('open');playMusic();burst();setTimeout(()=>{if(card.classList.contains('open'))$('recipient').focus({preventScroll:true});},reduced.matches?0:1100);});
  $('replay-card').addEventListener('click',()=>{cover.inert=false;letter.inert=true;card.classList.remove('open');open.setAttribute('aria-expanded','false');status.textContent='';fallback.hidden=true;open.focus({preventScroll:true});card.scrollIntoView({behavior:reduced.matches?'instant':'smooth',block:'start'});});
  const url=new URL(location.href);url.search='';url.hash='';const canonical=url.href;
  function manualCopy(){fallback.hidden=false;$('share-url').value=canonical;$('share-url').focus();$('share-url').select();status.textContent='复制链接后，可发给陈甫乙或转给其他朋友。';}
