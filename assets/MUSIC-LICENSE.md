@@ -35,3 +35,10 @@ https://creativecommons.org/licenses/by/4.0/
 Source: https://peritune.com/loop/PerituneMaterial_Taohua_loop.zip
 Retrieved 2026-09-10. The 2021 composition remains under CC BY 4.0, as confirmed on https://peritune.com/about/.
 Changes: official looping edition, AAC conversion and loudness normalization to -21 LUFS. Used as background music for the greeting.
+
+## Current soundtrack (ink9)
+
+春和景明 — Soulloom苏洛牧.
+Official song page: https://music.163.com/song?id=2686938595
+Embedded using the NetEase Cloud Music official external player from https://music.163.com/outchain/2/2686938595/. No audio file is copied or redistributed for this song.
+Player auto=1 requests autoplay; the official player repeats its single-track playlist. Browser and platform restrictions still apply.

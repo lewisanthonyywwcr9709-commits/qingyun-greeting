@@ -35,3 +35,6 @@
 @media(max-width:360px){.card>.cover-signature{left:7%;font-size:16px;gap:8px}}
 
 .music-credit{margin:24px 0 0;text-align:center;font-family:WenKai,serif;font-size:12px;line-height:1.8;letter-spacing:.025em;color:var(--gold)}.music-credit a{color:inherit;text-decoration:none}.music-credit a:hover{text-decoration:underline}
+
+/* Official player for the selected song; its single-track playlist repeats. */
+.music-dock{position:absolute;z-index:5;bottom:10px;left:50%;transform:translateX(-50%);width:min(300px,calc(100% - 28px));height:52px;background:#f5f2e9;border-radius:3px;overflow:hidden}.music-dock iframe{display:block;width:100%;height:52px;border:0}.music-dock[hidden]{display:none}.card.music-enabled>.cover-bottom{bottom:14%}.card.open>.music-dock{position:relative;left:auto;bottom:auto;transform:none;margin:4px auto 22px}
