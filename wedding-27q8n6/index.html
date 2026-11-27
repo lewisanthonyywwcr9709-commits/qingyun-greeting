@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#221413">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#241312">
 <meta name="description" content="祝吴圳龙、张泽艺新婚快乐。">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta property="og:type" content="website">
@@ -11,18 +11,264 @@
 <meta property="og:description" content="琴瑟在御，莫不静好。">
 <meta property="og:url" content="https://lewisanthonyywwcr9709-commits.github.io/qingyun-greeting/wedding-27q8n6/">
 <meta property="og:image" content="https://lewisanthonyywwcr9709-commits.github.io/qingyun-greeting/wedding-27q8n6/assets/open-card-1200.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <title>吴圳龙、张泽艺 · 新婚快乐</title>
 <style>
-html { background: #221413; }
+@font-face {
+  font-family: WeddingSong;
+  src: url("assets/song-regular-v2.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: WeddingSong;
+  src: url("assets/song-semibold-v2.otf") format("opentype");
+  font-weight: 600;
+  font-display: swap;
+}
+:root {
+  --silk: url("assets/silk-v2.jpg");
+  color-scheme: dark;
+  color: #f6dca2;
+  background: #241312;
+  font-family: WeddingSong, "Songti SC", SimSun, serif;
+}
+* { box-sizing: border-box; }
 body { margin: 0; }
-main { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; }
-img { display: block; width: min(100%, 129vh); width: min(100%, 129svh); height: auto; }
+main {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(15px,5vw,52px);
+  overflow: clip;
+  background: radial-gradient(ellipse at 50% 45%,#50271e,#241312 74%);
+}
+.spread {
+  width: min(100%, 54rem);
+  aspect-ratio: 4 / 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  isolation: isolate;
+  perspective: clamp(500px,160vw,1600px);
+  perspective-origin: 50% 42%;
+}
+.spread::before {
+  content: "";
+  position: absolute;
+  inset: 8% 2% -1%;
+  z-index: -1;
+  background: #130606c7;
+  opacity: .88;
+  filter: blur(18px);
+  animation: spread-shadow 1350ms ease-out both;
+}
+.leaf {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  transform-style: preserve-3d;
+  border-bottom: clamp(1px,.45vw,4px) solid #ac804c;
+  border-radius: 2px;
+  background: #641018;
+  box-shadow: 0 7px 16px #0d03028f;
+}
+.leaf::before, .leaf::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.leaf::before {
+  z-index:-2;
+  background: var(--silk) center / 100% 100% no-repeat;
+}
+.leaf::after {
+  z-index:-1;
+  inset: 2.1%;
+  border: 1px solid #e5ac656e;
+}
+.leaf--left {
+  transform-origin: right center;
+  --closed: 83deg;
+  --open: 5deg;
+  animation: unfold-leaf 1350ms cubic-bezier(.49,.06,.20,1) both;
+}
+.leaf--right {
+  transform-origin: left center;
+  --closed: -83deg;
+  --open: -5deg;
+  animation: unfold-leaf 1350ms cubic-bezier(.49,.06,.20,1) both;
+}
+.leaf--right::before { transform: scaleX(-1); }
+.spine {
+  position: absolute;
+  z-index: 1;
+  inset: 1% auto 1% 50%;
+  width: clamp(2px,.6vw,5px);
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,transparent,#2603089c,transparent);
+  pointer-events: none;
+}
+@keyframes unfold-leaf { from { transform: rotateY(var(--closed)); } to { transform: rotateY(var(--open)); } }
+@keyframes spread-shadow { from { transform: scaleX(.2); opacity: .17; } to { transform: scaleX(1); opacity: .88; } }
+.cover-copy { text-align:center; padding: 0 6%; }
+.cover-mark {
+  width: clamp(22px,5vw,47px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: 0 auto clamp(7px,2.2vw,20px);
+  border: 1px solid #edc17d;
+  border-radius: 50%;
+  font-size: clamp(13px,3vw,27px);
+}
+h1,h2,p,figure,blockquote,ul { margin:0; }
+h1,h2 { font-weight:600; }
+h1 { font-size: clamp(29px,7.8vw,77px); line-height:1.05; letter-spacing:.09em; padding-inline-start:.09em; }
+h1 span { display:block; }
+.to-label { margin-top:clamp(8px,2.3vw,20px); font-size:clamp(9px,2vw,15px); color:#edc384; }
+.names { margin-top:clamp(2px,.8vw,7px); font-size:clamp(10px,2.8vw,24px); white-space:nowrap; }
+.note-stage {
+  display:grid;
+  place-items:center;
+  width: 87%;
+  position:relative;
+  isolation:isolate;
+  perspective:450px;
+}
+.note-shadow {
+  position:absolute;
+  z-index:-1;
+  inset:1%;
+  border-radius:clamp(8px,2.7vw,23px);
+  background:#1b030c;
+  animation: note-depth 6.5s ease-in-out 1440ms infinite both;
+}
+.note {
+  width:100%;
+  text-align:center;
+  position:relative;
+  isolation:isolate;
+  padding: clamp(13px,3.4vw,30px) 5% clamp(12px,3.3vw,29px);
+  border:1px solid #d2a863;
+  border-radius:clamp(8px,2.7vw,23px);
+  color:#ffe4a9;
+  background:#4c1525 url("assets/wine-paper-v1.jpg") center / cover;
+  box-shadow:0 3px 0 #86623a, inset 0 1px 1px #e8b97554;
+  animation: note-float 6.5s ease-in-out 1440ms infinite both;
+}
+.note::before {
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid #d5a46565;
+  border-radius:clamp(5px,2.2vw,18px);
+  pointer-events:none;
+}
+@keyframes note-float {
+  0%,100% { transform: translate3d(0,0,0) rotateX(0); }
+  50% { transform: translate3d(0,clamp(-8px,-.85vw,-3px),12px) rotateX(2deg); }
+}
+@keyframes note-depth {
+  0%,100% { transform:translate(1px,4px) scale(.98); filter:blur(3px); opacity:.75; }
+  50% { transform:translate(2px,10px) scale(1.025); filter:blur(8px); opacity:.57; }
+}
+.dedication { color:#e9c688; font-size:clamp(9px,2.25vw,19px); white-space:nowrap; }
+h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-height:1.2; white-space:nowrap; }
+.divider { display:block; margin:clamp(6px,1.6vw,14px) auto clamp(4px,1.2vw,10px); width:26%; height:1px; background:#bc8a4e; }
+.poem blockquote { font-size:clamp(14px,3.8vw,31px); line-height:1.45; letter-spacing:.09em; }
+.poem blockquote span { display:block; }
+.poem figcaption { margin-top:clamp(3px,.95vw,7px); font-size:clamp(7px,1.75vw,14px); color:#e1bb80; }
+.signatures {
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  row-gap:clamp(2px,.7vw,6px);
+  margin:clamp(6px,1.7vw,14px) auto 0;
+  padding:clamp(5px,1.55vw,12px) 0 0;
+  border-top:1px solid #a57546;
+  color:#f5d8a1;
+  font-size:clamp(8px,2vw,17px);
+}
+.signatures li { flex: 0 0 25%; white-space:nowrap; }
+.seal {
+  display:inline-block;
+  margin-top:clamp(4px,1.2vw,10px);
+  border:1px solid #cda467;
+  padding:1px 4px;
+  font-size:clamp(7px,1.75vw,13px);
+}
+.perched {
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+}
+.perched img {
+  position:absolute;
+  left:var(--land-x);
+  top:var(--land-y);
+  width:clamp(30px,8vw,76px);
+  transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(var(--angle,0deg));
+  filter:drop-shadow(0 3px 3px #210609af);
+  animation: cross-to-edge 1250ms cubic-bezier(.2,.64,.25,1) var(--delay) both;
+}
+.perched .bird { --land-y:5%; --pass-y:15%; --delay:600ms; }
+.perched .butterfly { --land-y:91%; --pass-y:72%; --delay:860ms; width:clamp(25px,6.8vw,64px); }
+.perched .left { --land-x:2%; --pass-x:20%; --mirror:-1; --angle:-9deg; }
+.perched .right { --land-x:98%; --pass-x:80%; --angle:-9deg; }
+@keyframes cross-to-edge {
+  0% { left:50%; top:49%; opacity:0; transform:translate(-50%,-50%) scale(.22); }
+  15% { opacity:1; }
+  53% { left:var(--pass-x); top:var(--pass-y); transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(12deg) scale(.93); }
+  100% { left:var(--land-x); top:var(--land-y); opacity:1; transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(var(--angle,0deg)); }
+}
+@media (prefers-reduced-motion:reduce) {
+  *, *::before { animation:none !important; }
+  .leaf { transform:rotateY(var(--open)); }
+  .note-shadow { transform:translate(1px,5px); filter:blur(4px); opacity:.67; }
+}
 </style>
 </head>
 <body>
 <main>
-  <img src="assets/open-card-1200.jpg" srcset="assets/open-card-800.jpg 800w, assets/open-card-1200.jpg 1200w, assets/open-card-1600.jpg 1600w, assets/open-card-2320.jpg 2320w" sizes="(max-aspect-ratio: 58/45) 100vw, 129vh" width="2320" height="1800" alt="摊开的新婚贺卡。左页：新婚快乐，致吴圳龙、张泽艺。右页：祝吴圳龙、张泽艺新婚快乐！琴瑟在御，莫不静好。林维、吴章一、邱婕、陈甫乙、翁娈、郑源、张帅同贺。">
+  <article class="spread" aria-label="吴圳龙、张泽艺新婚贺卡">
+    <section class="leaf leaf--left" aria-label="封面">
+      <div class="cover-copy">
+        <div class="cover-mark" aria-hidden="true">囍</div>
+        <h1 aria-label="新婚快乐"><span>新婚</span><span>快乐</span></h1>
+        <p class="to-label">致</p>
+        <p class="names">吴圳龙、张泽艺</p>
+      </div>
+    </section>
+    <section class="leaf leaf--right" aria-label="贺词">
+      <div class="note-stage">
+        <span class="note-shadow" aria-hidden="true"></span>
+        <div class="note">
+          <p class="dedication">祝吴圳龙、张泽艺</p>
+          <h2>新婚快乐！</h2>
+          <span class="divider" aria-hidden="true"></span>
+          <figure class="poem">
+            <blockquote cite="https://ctext.org/book-of-poetry/nu-yue-ji-ming/zhs"><span>琴瑟在御</span><span>莫不静好</span></blockquote>
+            <figcaption>《诗经·郑风·女曰鸡鸣》</figcaption>
+          </figure>
+          <ul class="signatures" aria-label="署名"><li>林维</li><li>吴章一</li><li>邱婕</li><li>陈甫乙</li><li>翁娈</li><li>郑源</li><li>张帅</li></ul>
+          <p class="seal">同贺</p>
+        </div>
+      </div>
+    </section>
+    <div class="spine" aria-hidden="true"></div>
+    <div class="perched" aria-hidden="true">
+      <img class="bird left" src="assets/wedding-swallow.png" alt="">
+      <img class="bird right" src="assets/wedding-swallow.png" alt="">
+      <img class="butterfly left" src="assets/wedding-butterfly.png" alt="">
+      <img class="butterfly right" src="assets/wedding-butterfly.png" alt="">
+    </div>
+  </article>
 </main>
 </body>
 </html>
