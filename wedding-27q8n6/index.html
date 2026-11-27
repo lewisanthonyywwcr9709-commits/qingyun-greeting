@@ -285,6 +285,89 @@ button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   .wedding-glints i { animation: none; }
 }
+/* The hinge, dressing and paired ornaments move on separate layers. */
+.wedding-canvas { perspective: 1050px; }
+.cover {
+  min-height: 100%;
+  z-index: 6;
+  background: #641715 var(--silk) center / contain no-repeat;
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+.wedding-canvas.is-opening .cover {
+  pointer-events: none;
+  animation: cover-fold 900ms cubic-bezier(.62,.04,.29,1) both;
+}
+@keyframes cover-fold {
+  0% { transform: rotateY(0); box-shadow: inset 0 0 0 transparent; }
+  100% { transform: rotateY(-104deg); box-shadow: inset -25px 0 34px #1e0209a0; }
+}
+.wedding-canvas.is-opening .letter { animation: letter-arrival 800ms ease-out both; }
+@keyframes letter-arrival {
+  from { opacity: 0; transform: translateY(8px) scale(.97); }
+  55%,100% { opacity: 1; transform: none; }
+}
+.wedding-flight { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.opening-halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffdb9180, #f3b65834 37%, transparent 70%);
+  opacity: 0;
+}
+.wedding-canvas.is-opening .opening-halo { animation: opening-light 1050ms ease-out 410ms both; }
+@keyframes opening-light {
+  0%,100% { opacity: 0; transform: translate(-50%,-50%) scale(.48); }
+  38% { opacity: .9; transform: translate(-50%,-50%) scale(1.22); }
+  99% { transform: translate(-50%,-50%) scale(2.3); }
+}
+.wedding-flier {
+  position: absolute;
+  left: var(--landing-x);
+  top: var(--landing-y);
+  width: clamp(37px, 12.5vw, 66px);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 3px 4px #28020dbb);
+}
+.wedding-flier img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scaleX(var(--facing, 1)) rotate(var(--rest, 0deg));
+}
+.wedding-flier--left { --landing-x: 14%; --arc-x: 33%; --sweep-x: 19%; --facing: -1; --rest: 8deg; }
+.wedding-flier--right { --landing-x: 86%; --arc-x: 67%; --sweep-x: 81%; --rest: 8deg; }
+.wedding-flier--bird { --landing-y: 7.6%; --arc-y: 25%; --sweep-y: 12%; --delay: 570ms; }
+.wedding-flier--butterfly {
+  width: clamp(29px, 9.8vw, 50px);
+  --landing-y: 93.7%; --arc-y: 63%; --sweep-y: 86%; --delay: 920ms;
+  --rest: -17deg;
+}
+.wedding-canvas.is-opening .wedding-flier {
+  animation: paired-flight 1650ms cubic-bezier(.23,.58,.17,1) var(--delay) both;
+}
+.wedding-canvas.is-opening .wedding-flier img {
+  animation: wingbeats 1650ms ease-in-out var(--delay) both;
+}
+@keyframes paired-flight {
+  0% { left: 50%; top: 49%; opacity: 0; transform: translate(-50%,-50%) scale(.24); }
+  12% { opacity: 1; }
+  43% { left: var(--arc-x); top: var(--arc-y); transform: translate(-50%,-50%) scale(1.07); }
+  75% { left: var(--sweep-x); top: var(--sweep-y); transform: translate(-50%,-50%) scale(.89); }
+  100% { left: var(--landing-x); top: var(--landing-y); opacity: 1; transform: translate(-50%,-50%) scale(1); }
+}
+@keyframes wingbeats {
+  0%,31%,58%,82%,100% { transform: scaleX(var(--facing,1)) rotate(var(--rest,0deg)); }
+  19%,45%,70% { transform: scaleX(var(--facing,1)) scaleY(.68) rotate(calc(var(--rest,0deg) + 10deg)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wedding-canvas .cover, .wedding-canvas .letter,
+  .wedding-canvas .wedding-flier, .wedding-canvas .wedding-flier img,
+  .wedding-canvas .opening-halo { animation: none !important; }
+}
 /* The title, poetry and sign-off each share the card's optical axis. */
 .cover-copy {
   padding: 0;
@@ -453,7 +536,6 @@ h1 span {
         <div class="emblem" aria-hidden="true">囍</div>
         <h1 id="cover-title" aria-label="新婚快乐"><span>新婚</span><span>快乐</span></h1>
         <p class="recipient"><span class="recipient-label">致</span> <span class="recipient-names">吴圳龙、张泽艺</span></p>
-        <button type="button" id="open-card" class="open-button" aria-controls="letter">打开贺卡</button>
       </div>
     </section>
     <section class="card letter" id="letter" aria-labelledby="letter-title">
@@ -476,6 +558,13 @@ h1 span {
         </div>
       </div>
     </section>
+    <div class="wedding-flight" aria-hidden="true" hidden>
+      <span class="opening-halo"></span>
+      <span class="wedding-flier wedding-flier--bird wedding-flier--left"><img src="assets/wedding-swallow.png" alt=""></span>
+      <span class="wedding-flier wedding-flier--bird wedding-flier--right"><img src="assets/wedding-swallow.png" alt=""></span>
+      <span class="wedding-flier wedding-flier--butterfly wedding-flier--left"><img src="assets/wedding-butterfly.png" alt=""></span>
+      <span class="wedding-flier wedding-flier--butterfly wedding-flier--right"><img src="assets/wedding-butterfly.png" alt=""></span>
+    </div>
     <div class="gold-corner gold-corner--tl" aria-hidden="true"><i></i></div>
     <div class="gold-corner gold-corner--tr" aria-hidden="true"><i></i></div>
     <div class="gold-corner gold-corner--bl" aria-hidden="true"><i></i></div>
@@ -483,30 +572,45 @@ h1 span {
   </div>
 </main>
 <!-- Music: Positive Happy by PeriTune, https://peritune.com/blog/2019/01/06/positive_happy/ (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/). Excerpt, volume and fades adjusted. -->
-<audio id="card-music" loop preload="none" data-src="assets/positive-happy.mp3"></audio>
+<audio id="card-music" loop playsinline preload="none" data-src="assets/wedding-ambient-mix.mp3"></audio>
 <script>
 const cover = document.querySelector("#cover");
 const letter = document.querySelector("#letter");
-const openCard = document.querySelector("#open-card");
-const letterTitle = document.querySelector("#letter-title");
+const canvas = document.querySelector(".wedding-canvas");
+const flight = document.querySelector(".wedding-flight");
 const music = document.querySelector("#card-music");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function playMusic() {
   if (!music.hasAttribute("src")) music.src = music.dataset.src;
   music.play().catch(() => {});
 }
 
-letter.hidden = true;
-cover.hidden = false;
-
-openCard.addEventListener("click", () => {
+function finishOpening() {
   cover.hidden = true;
-  letter.hidden = false;
-  letter.classList.add("reveal");
-  letterTitle.focus();
-  playMusic();
-});
+  canvas.classList.remove("is-opening");
+}
 
+function openGreeting() {
+  letter.hidden = false;
+  flight.hidden = false;
+  if (reduceMotion) {
+    finishOpening();
+  } else {
+    canvas.classList.add("is-opening");
+    setTimeout(() => { cover.hidden = true; }, 900);
+    setTimeout(finishOpening, 2650);
+  }
+  playMusic();
+}
+
+if (reduceMotion) {
+  openGreeting();
+} else {
+  letter.hidden = true;
+  cover.hidden = false;
+  setTimeout(openGreeting, 440);
+}
 </script>
 <!-- Embedded Noto Serif SC font license
 This Font Software is licensed under the SIL Open Font License,
