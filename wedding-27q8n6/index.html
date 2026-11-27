@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#241312">
 <meta name="description" content="祝吴圳龙、张泽艺新婚快乐。">
 <meta name="robots" content="noindex, nofollow, noarchive">
@@ -276,6 +276,30 @@ h1, h2, .names, .poem blockquote {
   15% { opacity:1; }
   53% { left:var(--pass-x); top:var(--pass-y); transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(12deg) scale(.93); }
   100% { left:var(--land-x); top:var(--land-y); opacity:1; transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(var(--angle,0deg)); }
+}
+@media (orientation:landscape) and (max-height:600px) {
+  main {
+    min-height:100dvh;
+    padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left));
+  }
+  .spread {
+    width:min(100%,calc(133.333dvh - 30px));
+    container-type:inline-size;
+  }
+  .cover-mark { width:5.8cqw; font-size:3.45cqw; margin-bottom:2.35cqw; }
+  h1 { font-size:8.7cqw; }
+  .to-label { margin-top:2.5cqw; font-size:2.2cqw; }
+  .names { margin-top:.85cqw; font-size:3cqw; }
+  .note { padding:3.9cqw 5% 3.7cqw; }
+  .dedication { font-size:2.52cqw; }
+  h2 { font-size:5.0cqw; margin-top:.95cqw; }
+  .divider { margin:1.8cqw auto 1.3cqw; }
+  .poem blockquote { font-size:4.2cqw; }
+  .poem figcaption { font-size:1.94cqw; margin-top:1.08cqw; }
+  .signatures { font-size:2.23cqw; row-gap:.74cqw; margin-top:1.9cqw; padding-top:1.72cqw; }
+  .seal { font-size:1.95cqw; margin-top:1.34cqw; }
+  .perched > .bird { width:8.8cqw; }
+  .perched > .butterfly { width:7.4cqw; }
 }
 @media (prefers-reduced-motion:reduce) {
   *, *::before { animation:none !important; }
