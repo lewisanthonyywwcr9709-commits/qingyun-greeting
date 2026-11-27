@@ -242,9 +242,12 @@ h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-he
 }
 @supports ((background-clip:text) or (-webkit-background-clip:text)) {
   h1, h2, .names, .dedication, .poem blockquote, .signatures, .cover-mark, .seal {
-    background-image:linear-gradient(115deg,#f4d296 0%,#f4d296 36%,#ffe4a9 44%,#fff5d7 49%,#ffe4a9 54%,#f4d296 64%,#f4d296 100%);
-    background-size:250% 100%;
-    background-position:100% 50%;
+    background-image:
+      linear-gradient(110deg, transparent 0 42%, #fff0c445 46%, #fff8ddc9 49%, #ffe5ac65 52%, transparent 57% 100%),
+      linear-gradient(180deg, #fff0c8 0%, #f3d59b 43%, #d3a361 100%);
+    background-size:270% 100%, 100% 100%;
+    background-position:100% 50%, 0 0;
+    background-repeat:no-repeat;
     background-clip:text;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
@@ -254,9 +257,12 @@ h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-he
   .poem blockquote { animation-delay:2.2s; }
   .signatures { animation-delay:2.55s; }
   @keyframes gold-sheen {
-    0% { background-position:100% 50%; }
-    47%,100% { background-position:0% 50%; }
+    0% { background-position:100% 50%, 0 0; }
+    47%,100% { background-position:0% 50%, 0 0; }
   }
+}
+h1, h2, .names, .poem blockquote {
+  filter:drop-shadow(0 1px 1px #210509b5);
 }
 @media (forced-colors:active) {
   h1, h2, .names, .dedication, .poem blockquote, .signatures, .cover-mark, .seal {
