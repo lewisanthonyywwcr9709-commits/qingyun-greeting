@@ -184,6 +184,18 @@ h1 span { display:block; }
 }
 .dedication { color:#e9c688; font-size:clamp(9px,2.25vw,19px); white-space:nowrap; }
 h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-height:1.2; white-space:nowrap; }
+.wish-center {
+  display:inline-block;
+  white-space:nowrap;
+  font-kerning:none;
+  font-feature-settings:"halt" 0, "palt" 0;
+}
+/* Noto Serif SC places the exclamation's ink in the first third of its em. */
+.wish-bang {
+  display:inline-block;
+  inline-size:.35em;
+  text-align:start;
+}
 .divider { display:block; margin:clamp(6px,1.6vw,14px) auto clamp(4px,1.2vw,10px); width:26%; height:1px; background:#bc8a4e; }
 .poem blockquote { font-size:clamp(14px,3.8vw,31px); line-height:1.45; letter-spacing:.09em; }
 .poem blockquote span { display:block; }
@@ -327,7 +339,7 @@ h1, h2, .names, .poem blockquote {
         <span class="note-shadow" aria-hidden="true"></span>
         <div class="note">
           <p class="dedication">祝吴圳龙、张泽艺</p>
-          <h2>新婚快乐！</h2>
+          <h2><span class="wish-center">新婚快乐<span class="wish-bang">！</span></span></h2>
           <span class="divider" aria-hidden="true"></span>
           <figure class="poem">
             <blockquote cite="https://ctext.org/book-of-poetry/nu-yue-ji-ming/zhs"><span>琴瑟在御</span><span>莫不静好</span></blockquote>
