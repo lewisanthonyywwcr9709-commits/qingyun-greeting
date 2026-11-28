@@ -214,6 +214,11 @@ h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-he
   z-index:2;
   inset:0;
   pointer-events:none;
+  animation: show-perched 1ms step-end 1170ms both;
+}
+@keyframes show-perched {
+  from { visibility:hidden; }
+  to { visibility:visible; }
 }
 .perched > .bird, .perched > .butterfly {
   position:absolute;
@@ -222,11 +227,10 @@ h2 { font-size:clamp(16px,4.5vw,37px); margin-top: clamp(3px,.85vw,8px); line-he
   width:clamp(30px,8vw,76px);
   transform:translate(-50%,-50%) scaleX(var(--mirror,1)) rotate(var(--angle,0deg));
   filter:drop-shadow(0 3px 3px #210609af);
-  animation: cross-to-edge 1250ms cubic-bezier(.2,.53,.27,1) var(--delay) both;
 }
-.perched .bird { --land-y:5%; --rise-y:33cqw; --arc-y:7.5cqw; --delay:950ms; }
+.perched .bird { --land-y:5%; }
 .perched .butterfly {
-  --land-y:91%; --rise-y:-31.5cqw; --arc-y:-14.25cqw; --delay:1230ms;
+  --land-y:91%;
   width:clamp(25px,6.8vw,64px);
   aspect-ratio: 208 / 159;
   perspective: 110px;
@@ -275,24 +279,8 @@ h1, h2, .names, .poem blockquote {
     -webkit-text-fill-color:CanvasText;
   }
 }
-.perched .left { --land-x:2%; --rise-x:48cqw; --arc-x:18cqw; --mirror:-1; --angle:-9deg; }
-.perched .right { --land-x:98%; --rise-x:-48cqw; --arc-x:-18cqw; --angle:-9deg; }
-@keyframes cross-to-edge {
-  0% {
-    opacity:0;
-    transform:translate3d(calc(-50% + var(--rise-x)),calc(-50% + var(--rise-y)),0)
-      scaleX(var(--mirror,1)) scale(.24);
-  }
-  20% { opacity:1; }
-  54% {
-    transform:translate3d(calc(-50% + var(--arc-x)),calc(-50% + var(--arc-y)),0)
-      scaleX(var(--mirror,1)) rotate(12deg) scale(.93);
-  }
-  100% {
-    opacity:1;
-    transform:translate3d(-50%,-50%,0) scaleX(var(--mirror,1)) rotate(var(--angle,0deg));
-  }
-}
+.perched .left { --land-x:2%; --mirror:-1; --angle:-9deg; }
+.perched .right { --land-x:98%; --angle:-9deg; }
 @media (orientation:landscape) and (max-height:600px) {
   main {
     min-height:100dvh;
